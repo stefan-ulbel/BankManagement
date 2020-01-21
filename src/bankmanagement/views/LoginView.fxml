@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankmanagement.controllers.LoginController">
+    <children>
+        <Button fx:id="loginButton" layoutX="323.0" layoutY="171.0" onAction="#onLoginButton" text="Login" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <PasswordField fx:id="password" layoutX="151.0" layoutY="137.0" promptText="Password" />
+      <TextField fx:id="username" layoutX="151.0" layoutY="98.0" promptText="Username" />
+      <Label layoutX="158.0" layoutY="33.0" text="Bank Management">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelInfo" layoutX="151.0" layoutY="184.0" text="Incorrect password!" textFill="#8a0303" visible="false" />
+    </children>
+</AnchorPane>

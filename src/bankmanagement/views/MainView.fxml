@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankmanagement.controllers.MainController">
+   <children>
+      <TabPane prefHeight="461.0" prefWidth="653.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="transferTab" disable="true" text="Transfer">
+            <content>
+              <AnchorPane disable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="34.0" layoutY="33.0" text="Send funds to foreign bank">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="41.0" layoutY="228.0" mnemonicParsing="false" onAction="#onSendFunds" prefHeight="33.0" prefWidth="59.0" text="Send" />
+                        <GridPane layoutX="41.0" layoutY="100.0" prefHeight="107.0" prefWidth="478.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="232.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="23.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Receiver Account Nr" />
+                              <TextField fx:id="traAccnrTextField" prefHeight="27.0" prefWidth="156.0" promptText="i.e. 345324" GridPane.columnIndex="1" />
+                              <Slider fx:id="traAmountSlider" max="10000.0" min="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Amount" GridPane.rowIndex="1" />
+                              <Label text="Currency" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="traCurrencyCombx" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="traAmountLabel" prefHeight="17.0" prefWidth="60.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <Label layoutX="360.0" layoutY="25.0" text="Bank funds:" />
+                        <Label fx:id="traBankBalanceLabel" layoutX="444.0" layoutY="26.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="branchTab" disable="true" text="Branch">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="623.0">
+                     <children>
+                        <TableView fx:id="branchTable" layoutX="14.0" layoutY="14.0" prefHeight="367.0" prefWidth="352.0">
+                          <columns>
+                            <TableColumn fx:id="branchNameColumn" prefWidth="75.0" text="Name" />
+                              <TableColumn fx:id="branchAddressColumn" prefWidth="211.0" text="Address" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="strategyButton" layoutX="387.0" layoutY="108.0" mnemonicParsing="false" onAction="#onStrategyButton" text="Execute Strategy" />
+                        <ComboBox fx:id="strategyCombx" layoutX="387.0" layoutY="14.0" onAction="#onStrategyComboChange" prefWidth="150.0" />
+                        <Button fx:id="deleteBranchButton" layoutX="387.0" layoutY="147.0" mnemonicParsing="false" onAction="#onDeleteLocalBranch" text="Delete branch" />
+                        <Label fx:id="alertBranchLabel" layoutX="377.0" layoutY="188.0" prefHeight="36.0" prefWidth="21.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font></Label>
+                        <GridPane layoutX="387.0" layoutY="274.0" prefHeight="115.0" prefWidth="214.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="newLocalBranchButton" mnemonicParsing="false" onAction="#onBranchButtons" text="New" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Button fx:id="editLocalBranchButton" mnemonicParsing="false" onAction="#onBranchButtons" text="Edit" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                              <Button fx:id="newCountryBranchButton" mnemonicParsing="false" onAction="#onBranchButtons" text="New" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                              <Label text="Local Branches" GridPane.halignment="CENTER" />
+                              <Label text="Country branches" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <Button fx:id="editCountryBranchButton" mnemonicParsing="false" onAction="#onBranchButtons" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="fundingTab" disable="true" text="Funding">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="435.0" prefWidth="539.0">
+                     <children>
+                        <TableView fx:id="fundingTable" layoutX="31.0" layoutY="26.0" prefHeight="387.0" prefWidth="392.0">
+                          <columns>
+                            <TableColumn fx:id="funBranchColumn" prefWidth="151.0" text="Branch" />
+                            <TableColumn fx:id="funBalanceColumn" minWidth="4.0" prefWidth="204.0" text="Balance Sum" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="437.0" layoutY="97.0" mnemonicParsing="false" onAction="#onLiquidityCheckButton" text="Perform liquidity check" />
+                        <Label fx:id="liquidityLabel" layoutX="437.0" layoutY="140.0" prefHeight="17.0" prefWidth="8.0" />
+                        <Button layoutX="437.0" layoutY="26.0" mnemonicParsing="false" onAction="#onFundingRefresh" text="Refresh" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="employeesTab" text="Employees">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="623.0">
+                     <children>
+                        <TableView fx:id="employeeTable" layoutX="14.0" layoutY="14.0" prefHeight="368.0" prefWidth="417.0">
+                           <columns>
+                              <TableColumn fx:id="empFirstNameColumn" prefWidth="81.0" text="First Name" />
+                              <TableColumn fx:id="empLastNameColumn" prefWidth="94.0" text="Last Name" />
+                              <TableColumn fx:id="empPositionColumn" prefWidth="75.0" text="Position" />
+                              <TableColumn fx:id="empSalaryColumn" prefWidth="75.0" text="Salary" />
+                           </columns>
+                        </TableView>
+                        <ComboBox fx:id="empBranchCombx" layoutX="452.0" layoutY="14.0" onAction="#onEmpBranchComboChange" prefWidth="150.0" />
+                        <Button fx:id="deleteEmployeeButton" layoutX="547.0" layoutY="242.0" mnemonicParsing="false" onAction="#onDeleteEmployee" text="Delete" />
+                        <Button fx:id="editEmployeeButton" layoutX="547.0" layoutY="207.0" mnemonicParsing="false" onAction="#onEditEmployee" text="Edit" />
+                        <Label fx:id="alertEmployeeLabel" layoutX="439.0" layoutY="76.0" prefHeight="27.0" prefWidth="26.0" />
+                        <Button fx:id="newEmployeeButton" layoutX="547.0" layoutY="171.0" mnemonicParsing="false" onAction="#onNewEmployee" text="New" />
+                        <Button fx:id="branchmanagertEditBranchButton" layoutX="452.0" layoutY="343.0" mnemonicParsing="false" onAction="#onBranchButtons" text="Edit my branch" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Customers">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="customerTable" layoutX="14.0" layoutY="14.0" prefHeight="368.0" prefWidth="417.0">
+                           <columns>
+                              <TableColumn fx:id="cusFirstNameColumn" prefWidth="81.0" text="First Name" />
+                              <TableColumn fx:id="cusLastNameColumn" prefWidth="94.0" text="Last Name" />
+                              <TableColumn fx:id="cusSatisfactionColumn" prefWidth="75.0" text="Satisfaction" />
+                              <TableColumn fx:id="cusBalanceColumn" prefWidth="75.0" text="Balance" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="554.0" layoutY="138.0" mnemonicParsing="false" onAction="#onNewCustomer" text="New" />
+                        <Button layoutX="554.0" layoutY="174.0" mnemonicParsing="false" onAction="#onEditCustomer" text="Edit" />
+                        <Button layoutX="554.0" layoutY="208.0" mnemonicParsing="false" onAction="#onDeleteCustomer" text="Delete" />
+                        <ComboBox fx:id="cusBranchCombx" layoutX="473.0" layoutY="14.0" onAction="#onCusBranchComboChange" prefWidth="150.0" />
+                        <Label fx:id="alertCustomerLabel" layoutX="466.0" layoutY="333.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Accounts">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="accountTable" layoutX="14.0" layoutY="14.0" prefHeight="368.0" prefWidth="447.0">
+                           <columns>
+                              <TableColumn fx:id="accOwnerColumn" prefWidth="103.0" text="Customer" />
+                              <TableColumn fx:id="accBalanceColumn" prefWidth="78.0" text="Balance" />
+                              <TableColumn fx:id="accCurrencyColumn" prefWidth="61.0" text="Currency" />
+                              <TableColumn fx:id="accInterestColumn" text="Interest Rate" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="554.0" layoutY="138.0" mnemonicParsing="false" onAction="#onNewAccount" text="New" />
+                        <Button layoutX="554.0" layoutY="174.0" mnemonicParsing="false" onAction="#onEditAccount" text="Edit" />
+                        <Button layoutX="554.0" layoutY="208.0" mnemonicParsing="false" onAction="#onDeleteAccount" text="Delete" />
+                        <ComboBox fx:id="accBranchCombx" layoutX="473.0" layoutY="14.0" onAction="#onAccBranchComboChange" prefWidth="150.0" />
+                        <Label fx:id="alertAccountLabel" layoutX="466.0" layoutY="333.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Accordion layoutX="227.0" layoutY="160.0" />
+      <ComboBox fx:id="branchDirCombx" disable="true" layoutX="659.0" layoutY="7.0" onAction="#onBranchDirComboChange" prefWidth="150.0" />
+      <Label layoutX="688.0" layoutY="34.0" text="Country Branch">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="deleteCountryBranchButton" layoutX="683.0" layoutY="52.0" mnemonicParsing="false" onAction="#onDeleteCountryBranch" text="Delete selected" visible="false" />
+   </children>
+</AnchorPane>
